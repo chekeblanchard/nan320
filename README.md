@@ -44,4 +44,66 @@ func maximum() int {
 		i++
 	}
 }
+---------------------------
+package main
+
+import (
+"fmt"
+)
+
+func main() {
+fmt.Println(control(15, 1, 3, 0)) 
+}
+
+func control(age, permis, assurance, accident int) string {
+	switch {
+		case age < 25 && permis < 2:
+			if accident == 0 {
+				if assurance >= 5 {
+					return "Orange"
+				}
+				return "Rouge"
+			} else {
+				return "Refusé"
+			}
+		case (age < 25 && permis > 2) || (age > 25 && permis < 2):
+		
+			if accident == 0 {
+				if assurance >= 5 {
+					return "Vert"
+				}
+				return "Orange"
+			} else if accident == 1 {
+				if assurance >= 5 {
+					return "Orange"
+				}
+				return "Rouge"
+			}
+			return "Refusé"
+		case (age > 25 && permis > 2):
+			switch accident {
+				case 0:
+					if assurance >= 5 {
+						return "Bleu"
+					}
+					return "Vert"
+				case 1:
+					if assurance >= 5 {
+						return "Vert"
+					}
+					return "Orange"
+				case 2:
+					if assurance >= 5 {
+						return "Orange"
+					}
+					return "Rouge"
+				default:
+					return "Refusé"
+			}
+		
+		
+		
+	}
+	return ""
+}
 
